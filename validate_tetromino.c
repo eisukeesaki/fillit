@@ -6,13 +6,12 @@
 /*   By: nwhitlow <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/12 19:47:47 by nwhitlow          #+#    #+#             */
-/*   Updated: 2019/05/12 20:46:56 by nwhitlow         ###   ########.fr       */
+/*   Updated: 2019/05/13 20:15:08 by nwhitlow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
-void	*ft_memcpy(void *dst, const void *src, size_t n);
+#include "libft.h"
+#include "tetromino.h"
 
 static int	is_solid(char *input, int i)
 {
@@ -21,52 +20,75 @@ static int	is_solid(char *input, int i)
 	return (input[i] == '#');
 }
 
-static int	check_tile(char *input, int i, int *connections, int *solids)
+static int	validate(char *input, t_mino *tetromino, int *solids)
 {
-	if (i % 5 == 4 || i == 20)
+	int i;
+
+	i = 0;
+	while (i < 21)
 	{
-		if (input[i] != '\n')
-			return (0);
-	}
-	else
-	{
-		if (input[i] == '#')
+		if (i % 5 == 4 || i == 20)
 		{
-			*solids += 1;
-			*connections += is_solid(input, i - 1);
-			*connections += is_solid(input, i - 5);
-			return (1);
+			if (input[i] != '\n')
+				return (0);
 		}
-		else if (input[i] != '.')
-			return (0);
+		else
+		{
+			if (input[i] == '#')
+			{
+				*solids += 1;
+				tetromino->width += is_solid(input, i - 1);
+				tetromino->height += is_solid(input, i - 5);
+			}
+			else if (input[i] != '.')
+				return (0);
+		}
+		i++;
 	}
 	return (1);
 }
 
-char		*str_to_tetromino(char *input)
+static void	extract_pattern(char *input, t_mino *tetromino)
 {
-	int		i;
-	int		connections;
-	int		solids;
-	char	*tetromino;
+	char	padded[16];
+	char	*tmp;
+	int		start;
+	int		end;
 
-	i = 0;
-	connections = 0;
-	solids = 0;
-	while (i < 21)
-	{
-		if (!check_tile(input, i, &connections, &solids))
-			return (NULL);
-		i++;
-	}
-	if (solids != 4 || connections < 3)
-		return (NULL);
-	tetromino = (char *)malloc(16 * sizeof(char));
+	ft_memcpy(padded, input, 4);
+	ft_memcpy(padded + 4, input + 5, 4);
+	ft_memcpy(padded + 8, input + 10, 4);
+	ft_memcpy(padded + 12, input + 15, 4);
+	start = 0;
+	end = 15;
+	while (padded[start] == '.')
+		start++;
+	while (padded[end] == '.')
+		end--;
+	ft_memcpy(tetromino->pattern, padded + start, end - start + 1);
+	tetromino->pattern[end - start + 1] = 0;
+}
+
+t_mino		*str_to_mino(char *input)
+{
+	int		solids;
+	t_mino	*tetromino;
+
+	tetromino = (t_mino *)malloc(sizeof(tetromino));
 	if (!tetromino)
 		return (NULL);
-	ft_memcpy(tetromino, input, 4);
-	ft_memcpy(tetromino + 4, input + 5, 4);
-	ft_memcpy(tetromino + 8, input + 10, 4);
-	ft_memcpy(tetromino + 12, input + 15, 4);
+	tetromino->width = 1;
+	tetromino->height = 1;
+	solids = 0;
+	if (!validate(input, tetromino, &solids))
+		return (NULL);
+	if (solids != 4 || tetromino->width + tetromino->height < 5)
+		return (NULL);
+	if (tetromino->width == tetromino->height)
+	{
+		tetromino->width = 2;
+		tetromino->height = 2;
+	}
+	extract_pattern(input, tetromino);
 	return (tetromino);
 }
