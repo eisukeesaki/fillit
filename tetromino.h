@@ -6,7 +6,7 @@
 /*   By: nwhitlow <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/13 19:06:48 by nwhitlow          #+#    #+#             */
-/*   Updated: 2019/05/13 19:13:31 by nwhitlow         ###   ########.fr       */
+/*   Updated: 2019/05/14 19:42:50 by nwhitlow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,7 @@ typedef struct		s_mino
 	char			pattern[14];
 	char			letter;
 }					t_mino;
+
+t_mino	*str_to_mino(char *input);
 
 #endif
