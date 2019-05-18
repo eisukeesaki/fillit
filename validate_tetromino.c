@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   validate_tetromino.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nwhitlow <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/12 19:47:47 by nwhitlow          #+#    #+#             */
-/*   Updated: 2019/05/13 20:15:08 by nwhitlow         ###   ########.fr       */
+/*   Updated: 2019/05/17 22:10:05 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fillit.h"
 #include "tetromino.h"
 
 static int	is_solid(char *input, int i)

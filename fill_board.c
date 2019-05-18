@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   fill_board.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nwhitlow <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 18:38:25 by nwhitlow          #+#    #+#             */
-/*   Updated: 2019/05/14 20:00:21 by nwhitlow         ###   ########.fr       */
+/*   Updated: 2019/05/17 22:09:38 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tetromino.h"
-#include "libft.h"
+#include "fillit.h"
 
 int		board_is_ok(char board[][16], int board_size, t_mino **minos, int piece)
 {
