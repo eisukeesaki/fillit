@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/12 19:47:47 by nwhitlow          #+#    #+#             */
-/*   Updated: 2019/05/17 22:10:05 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/05/22 19:12:07 by nwhitlow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,17 @@ static void	extract_pattern(char *input, t_mino *tetromino)
 	ft_memcpy(padded + 8, input + 10, 4);
 	ft_memcpy(padded + 12, input + 15, 4);
 	start = 0;
-	end = 15;
-	while (padded[start] == '.')
+	while (ft_strnequ(padded + start, "....", 4))
+		start += 4;
+	while (1)
+	{
+		if (padded[start] == '#' || padded[start + 4] == '#')
+			break ;
+		if (padded[start + 8] == '#' || padded[start + 12] == '#')
+			break ;
 		start++;
+	}
+	end = 15;
 	while (padded[end] == '.')
 		end--;
 	ft_memcpy(tetromino->pattern, padded + start, end - start + 1);
