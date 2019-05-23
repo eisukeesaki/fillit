@@ -45,14 +45,19 @@ t_mino	**raw_minos_to_minos(size_t g_mino_ct, char **raw_minos)
 	size_t	i;
 	t_mino	*mino;
 	t_mino	**minos;
+	// char	letter;
 
 	i = 0;
 	mino = NULL;
-	minos = ft_memalloc(sizeof(t_mino *) * g_mino_ct);
+	minos = ft_memalloc(sizeof(t_mino *) * g_mino_ct + 1);
+	// letter = 'A';
 	while (raw_minos[i])
 	{
 		minos[i] = str_to_mino(raw_minos[i]);
+		// minos[i]->letter = letter;
+		// letter++;
 		i++;
 	}
 	return (minos);
 }
+
