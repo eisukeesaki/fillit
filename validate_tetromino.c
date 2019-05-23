@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/12 19:47:47 by nwhitlow          #+#    #+#             */
-/*   Updated: 2019/05/22 19:12:07 by nwhitlow         ###   ########.fr       */
+/*   Updated: 2019/05/23 12:55:56 by nwhitlow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ t_mino		*str_to_mino(char *input)
 	int		solids;
 	t_mino	*tetromino;
 
-	tetromino = (t_mino *)malloc(sizeof(tetromino));
+	tetromino = (t_mino *)malloc(sizeof(t_mino));
 	if (!tetromino)
 		return (NULL);
 	tetromino->width = 1;
