@@ -8,15 +8,20 @@ OBJS=fillit.o \
 RM=rm -rf
 NAME=fillit
 
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -I libft -L libft -lft -o $(NAME)
+vpath libft.a libft
+
+$(NAME): $(OBJS) -lft
+	@echo Compiling fillit executable...
+	@$(CC) $(CFLAGS) $(OBJS) -I libft -L libft -lft -o $(NAME)
 
 all: $(NAME)
 
 clean:
-	$(RM) $(OBJS)
+	@echo "Cleaning object files..."
+	@$(RM) $(OBJS)
 
 fclean: clean
-	$(RM) $(NAME)
+	@echo "Cleaning fillit executable..."
+	@$(RM) $(NAME)
 
 re: fclean all
