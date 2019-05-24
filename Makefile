@@ -1,10 +1,5 @@
 CC=gcc
-CFLAGS=-Wall -Wextra -Werror
-CSRC=fillit.c \
-	 fill_board.c \
-	 place_tetromino.c \
-	 read_tetromino.c \
-	 validate_tetromino.c
+CFLAGS=-Wall -Wextra -Werror -I libft
 OBJS=fillit.o \
 	 fill_board.o \
 	 place_tetromino.o \
@@ -13,8 +8,7 @@ OBJS=fillit.o \
 RM=rm -rf
 NAME=fillit
 
-$(NAME):
-	$(CC) $(CFLAGS) -c $(CSRC) -I libft
+$(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -I libft -L libft -lft -o $(NAME)
 
 all: $(NAME)

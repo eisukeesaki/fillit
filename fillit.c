@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/23 21:14:55 by eesaki            #+#    #+#             */
-/*   Updated: 2019/05/23 21:56:50 by nwhitlow         ###   ########.fr       */
+/*   Updated: 2019/05/24 12:01:52 by nwhitlow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	print_board(char board[][16], int board_size)
 	}
 }
 
-int	fillit(t_mino **minos)
+int		fillit(t_mino **minos)
 {
 	char	board[16][16];
 	int		board_size;
@@ -40,6 +40,20 @@ int	fillit(t_mino **minos)
 		return (0);
 	print_board(board, board_size);
 	return (1);
+}
+
+void	free_minos(t_mino **minos)
+{
+	t_mino	*mino;
+	int		i;
+
+	i = 0;
+	while ((mino = minos[i]) != NULL)
+	{
+		free(minos[i]);
+		i++;
+	}
+	free(minos);
 }
 
 int		main(int ac, char **av)
@@ -64,5 +78,6 @@ int		main(int ac, char **av)
 		ft_putendl("error");
 		return (1);
 	}
+	free_minos(minos);
 	return (0);
 }
