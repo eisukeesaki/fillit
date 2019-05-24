@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/12 19:47:47 by nwhitlow          #+#    #+#             */
-/*   Updated: 2019/05/23 12:55:56 by nwhitlow         ###   ########.fr       */
+/*   Updated: 2019/05/23 21:58:50 by nwhitlow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ static int	validate(char *input, t_mino *tetromino, int *solids)
 static void	extract_pattern(char *input, t_mino *tetromino)
 {
 	char	padded[16];
-	char	*tmp;
 	int		start;
 	int		end;
 

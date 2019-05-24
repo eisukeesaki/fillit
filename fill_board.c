@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 18:38:25 by nwhitlow          #+#    #+#             */
-/*   Updated: 2019/05/23 19:17:21 by nwhitlow         ###   ########.fr       */
+/*   Updated: 2019/05/23 21:40:16 by nwhitlow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,14 @@ static int	num_minos(t_mino **minos)
 	return (mino_count);
 }
 
-void		fill_board(t_mino **minos)
+int			fill_board(char board[][16], t_mino **minos)
 {
-	char	board[16][16];
-	int		board_size;
+	int	board_size;
 
 	ft_memset(board, '.', 256);
 	board_size = sqrt_round_up(num_minos(minos) * 4);
 	while (!board_is_ok(board, board_size, minos, 0))
 		board_size++;
+	// TODO Put back the board size overflow check (return -1)
+	return (board_size);
 }

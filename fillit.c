@@ -6,26 +6,63 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/23 21:14:55 by eesaki            #+#    #+#             */
-/*   Updated: 2019/05/23 21:14:56 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/05/23 21:56:50 by nwhitlow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tetromino.h"
 #include "fillit.h"
+
+void	print_board(char board[][16], int board_size)
+{
+	int y;
+
+	y = 0;
+	while (y < board_size)
+	{
+		write(1, board[y], board_size);
+		write(1, "\n", 1);
+		y++;
+	}
+}
+
+int	fillit(t_mino **minos)
+{
+	char	board[16][16];
+	int		board_size;
+
+	if (!minos)
+	{
+		ft_putendl("error");
+		return (0);
+	}
+	board_size = fill_board(board, minos);
+	if (board_size < 0)
+		return (0);
+	print_board(board, board_size);
+	return (1);
+}
 
 int		main(int ac, char **av)
 {
 	int		fd;
+	t_mino	**minos;
 
 	if (ac != 2)
 	{
-		ft_putendl("invalid number of arguments.");
+		ft_putendl("usage: ./fillit input_file");
 		return (0);
 	}
 	if ((fd = open(av[1], O_RDONLY)) == -1)
-		ft_putendl("file open error");
-	fillit(fd_to_minos(fd));
+	{
+		ft_putendl("error");
+		return (1);
+	}
+	minos = fd_to_minos(fd);
 	close(fd);
+	if (!fillit(minos))
+	{
+		ft_putendl("error");
+		return (1);
+	}
 	return (0);
 }
-
