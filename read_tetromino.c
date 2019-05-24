@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/23 22:45:26 by eesaki            #+#    #+#             */
-/*   Updated: 2019/05/24 11:57:51 by nwhitlow         ###   ########.fr       */
+/*   Updated: 2019/05/24 12:24:06 by nwhitlow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int		read_input(const int fd, char *buff)
 		return (0);
 	while (1)
 	{
-		if ((rc = read(fd, buff, BUFF_SIZE)) == 0)
+		if ((rc = read(fd, buff, BUFF_SIZE)) != 1)
 			break;
 	}
 	if (rc == -1)
@@ -61,6 +61,8 @@ static t_mino	**raw_minos_to_minos(size_t mino_ct, char **raw_minos)
 	while (raw_minos[i])
 	{
 		minos[i] = str_to_mino(raw_minos[i]);
+		if (!minos[i])
+			return (NULL);
 		minos[i]->letter = letter;
 		letter++;
 		i++;
@@ -89,6 +91,8 @@ t_mino			**fd_to_minos(int const fd)
 	t_mino	**minos;
 
 	if (!(read_input(fd, input)))
+		return (NULL);
+	if (ft_strlen(input) % 21 != 20)
 		return (NULL);
 	if (!(mino_ct = ft_strlen(input) / 21) % 21)
 		return (NULL);

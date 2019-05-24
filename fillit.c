@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/23 21:14:55 by eesaki            #+#    #+#             */
-/*   Updated: 2019/05/24 12:01:52 by nwhitlow         ###   ########.fr       */
+/*   Updated: 2019/05/24 12:21:34 by nwhitlow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,7 @@ int		fillit(t_mino **minos)
 	int		board_size;
 
 	if (!minos)
-	{
-		ft_putendl("error");
 		return (0);
-	}
 	board_size = fill_board(board, minos);
 	if (board_size < 0)
 		return (0);
