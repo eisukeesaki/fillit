@@ -6,14 +6,14 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 18:38:25 by nwhitlow          #+#    #+#             */
-/*   Updated: 2019/05/17 22:09:38 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/05/23 19:17:21 by nwhitlow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tetromino.h"
 #include "fillit.h"
 
-int		board_is_ok(char board[][16], int board_size, t_mino **minos, int piece)
+static int	board_is_ok(char board[][16], int bsize, t_mino **minos, int piece)
 {
 	t_mino	*mino;
 	int		y;
@@ -23,15 +23,15 @@ int		board_is_ok(char board[][16], int board_size, t_mino **minos, int piece)
 	if (!mino)
 		return (1);
 	y = 0;
-	while (y < board_size - mino->height + 1)
+	while (y < bsize - mino->height + 1)
 	{
 		x = 0;
-		while (x < board_size - mino->width + 1)
+		while (x < bsize - mino->width + 1)
 		{
 			if (check(board, mino, x, y))
 			{
 				place(board, mino, x, y);
-				if (board_is_ok(board, board_size, minos, piece + 1))
+				if (board_is_ok(board, bsize, minos, piece + 1))
 					return (1);
 				clear(board, mino, x, y);
 			}
@@ -42,14 +42,33 @@ int		board_is_ok(char board[][16], int board_size, t_mino **minos, int piece)
 	return (0);
 }
 
-void	fillit(t_mino **minos)
+static int	sqrt_round_up(int n)
 {
-	char board[16][16];
-	int board_size;
+	int root;
+
+	root = 0;
+	while (root * root < n)
+		root++;
+	return (root);
+}
+
+static int	num_minos(t_mino **minos)
+{
+	int mino_count;
+
+	mino_count = 0;
+	while (minos[mino_count])
+		mino_count++;
+	return (mino_count);
+}
+
+void		fill_board(t_mino **minos)
+{
+	char	board[16][16];
+	int		board_size;
 
 	ft_memset(board, '.', 256);
-	/* TODO initial board size can be adjusted based on number of minos */
-	board_size = 3;
+	board_size = sqrt_round_up(num_minos(minos) * 4);
 	while (!board_is_ok(board, board_size, minos, 0))
 		board_size++;
 }
