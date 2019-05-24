@@ -1,19 +1,32 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   read_tetromino.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/05/23 22:45:26 by eesaki            #+#    #+#             */
+/*   Updated: 2019/05/23 22:45:27 by eesaki           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "tetromino.h"
 #include "fillit.h"
 
-static void		read_input(const int fd, char *buff)
+static int		read_input(const int fd, char *buff)
 {
 	int		rc;
 
 	if (fd < 0 || BUFF_SIZE <= 0)
-		return ;
+		return (0);
 	while (1)
 	{
 		if ((rc = read(fd, buff, BUFF_SIZE)) == 0)
 			break;
 	}
 	if (rc == -1)
-		return ;
+		return (0);
+	return (1);
 }
 
 static char		**buff_to_raw_minos(size_t mino_ct, char *input)
@@ -24,10 +37,11 @@ static char		**buff_to_raw_minos(size_t mino_ct, char *input)
 
 	head = 0;
 	i = 0;
-	raw_minos = ft_memalloc(sizeof(char *) * (mino_ct + 1));
+	if (!(raw_minos = ft_memalloc(sizeof(char *) * (mino_ct + 1))))
+		return (NULL);
 	while (i < mino_ct)
 	{
-		raw_minos[i]= ft_strsub(input, head, 21);
+		raw_minos[i] = ft_strsub(input, head, 21);
 		head = head + 21;
 		i++;
 	}
@@ -37,13 +51,12 @@ static char		**buff_to_raw_minos(size_t mino_ct, char *input)
 static t_mino	**raw_minos_to_minos(size_t mino_ct, char **raw_minos)
 {
 	size_t	i;
-	t_mino	*mino;
 	t_mino	**minos;
 	char	letter;
 
 	i = 0;
-	mino = NULL;
-	minos = ft_memalloc(sizeof(t_mino *) * mino_ct + 1);
+	if (!(minos = ft_memalloc(sizeof(t_mino *) * mino_ct + 1)))
+		return (NULL);
 	letter = 'A';
 	while (raw_minos[i])
 	{
@@ -61,9 +74,12 @@ t_mino			**fd_to_minos(int const fd)
 	size_t	mino_ct;
 	char	**split_minos;
 
-	read_input(fd, input);
-	mino_ct = ft_strlen(input) / 21;
-	split_minos = buff_to_raw_minos(mino_ct, input);
+	if (!(read_input(fd, input)))
+		return (NULL);
+	if (!(mino_ct = ft_strlen(input) / 21) % 21)
+		return (NULL);
+	if (!(split_minos = buff_to_raw_minos(mino_ct, input)))
+		return (NULL);
 	return (raw_minos_to_minos(mino_ct, split_minos));
 }
 
