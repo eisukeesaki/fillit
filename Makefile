@@ -24,5 +24,9 @@ clean:
 fclean: clean
 	@echo "Cleaning fillit executable..."
 	@$(RM) $(NAME)
+	make -C libft fclean
 
 re: fclean all
+
+libft/libft.a:
+	make -C libft all
