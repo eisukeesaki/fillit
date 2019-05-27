@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/23 22:45:26 by eesaki            #+#    #+#             */
-/*   Updated: 2019/05/26 18:14:22 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/05/26 18:41:39 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int		read_input(const int fd, char *buff, size_t *rc)
 	while (1)
 	{
 		if ((*rc = read(fd, buff, BUFF_SIZE)) != 1)
-			break;
+			break ;
 	}
 	if ((int)*rc == -1)
 		return (0);
