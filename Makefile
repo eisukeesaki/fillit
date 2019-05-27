@@ -1,6 +1,7 @@
 CC=gcc
 CFLAGS=-Wall -Wextra -Werror -I libft
 OBJS=fillit.o \
+	 check_parity.o \
 	 fill_board.o \
 	 place_tetromino.o \
 	 read_tetromino.o \

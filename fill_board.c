@@ -6,12 +6,12 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 18:38:25 by nwhitlow          #+#    #+#             */
-/*   Updated: 2019/05/23 21:40:16 by nwhitlow         ###   ########.fr       */
+/*   Updated: 2019/05/26 18:19:10 by nwhitlow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tetromino.h"
 #include "fillit.h"
+#include "check_parity.h"
 
 static int	board_is_ok(char board[][16], int bsize, t_mino **minos, int piece)
 {
@@ -67,7 +67,7 @@ int			fill_board(char board[][16], t_mino **minos)
 	int	board_size;
 
 	ft_memset(board, '.', 256);
-	board_size = sqrt_round_up(num_minos(minos) * 4);
+	board_size = sqrt_round_up(num_minos(minos) * 4 + check_parity(minos));
 	while (!board_is_ok(board, board_size, minos, 0))
 		board_size++;
 	// TODO Put back the board size overflow check (return -1)
