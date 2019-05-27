@@ -20,11 +20,14 @@ all: $(NAME)
 clean:
 	@echo "Cleaning object files..."
 	@$(RM) $(OBJS)
+	@echo "Cleaning libft object files..."
+	@make -C libft clean
 
 fclean: clean
 	@echo "Cleaning fillit executable..."
 	@$(RM) $(NAME)
-	make -C libft fclean
+	@echo "Cleaning libft..."
+	@make -C libft fclean
 
 re: fclean all
 
