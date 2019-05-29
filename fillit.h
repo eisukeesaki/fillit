@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/26 18:40:14 by eesaki            #+#    #+#             */
-/*   Updated: 2019/05/26 18:40:15 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/05/28 19:12:37 by nwhitlow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 
 # include "libft/libft.h"
 # include "tetromino.h"
+# include "check_parity.h"
 # include <unistd.h>
 # include <fcntl.h>
 

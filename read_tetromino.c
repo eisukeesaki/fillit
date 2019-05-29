@@ -6,14 +6,12 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/23 22:45:26 by eesaki            #+#    #+#             */
-/*   Updated: 2019/05/26 18:41:39 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/05/28 19:15:03 by nwhitlow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tetromino.h"
 #include "fillit.h"
-
-#include <stdio.h>
 
 static int		read_input(const int fd, char *buff, size_t *rc)
 {
@@ -37,7 +35,7 @@ static char		**buff_to_raw_minos(size_t mino_ct, char *input)
 
 	head = 0;
 	i = 0;
-	if (!(raw_minos = ft_memalloc(sizeof(char *) * (mino_ct + 1))))
+	if (!(raw_minos = (char **)ft_memalloc(sizeof(char *) * (mino_ct + 1))))
 		return (NULL);
 	while (i < mino_ct)
 	{
@@ -55,7 +53,7 @@ static t_mino	**raw_minos_to_minos(size_t mino_ct, char **raw_minos)
 	char	letter;
 
 	i = 0;
-	if (!(minos = ft_memalloc(sizeof(t_mino *) * (mino_ct + 1))))
+	if (!(minos = (t_mino **)ft_memalloc(sizeof(t_mino *) * (mino_ct + 1))))
 		return (NULL);
 	letter = 'A';
 	while (i < mino_ct)

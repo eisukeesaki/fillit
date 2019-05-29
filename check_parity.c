@@ -6,13 +6,11 @@
 /*   By: nwhitlow <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/26 15:35:49 by nwhitlow          #+#    #+#             */
-/*   Updated: 2019/05/26 16:15:45 by nwhitlow         ###   ########.fr       */
+/*   Updated: 2019/05/28 19:16:03 by nwhitlow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include "tetromino.h"
-#include "check_parity.h"
+#include "fillit.h"
 
 int		mino_parity(char *pattern)
 {
@@ -27,12 +25,6 @@ int		mino_parity(char *pattern)
 	}
 	return (0);
 }
-
-/*
-** Returns 1 if the list of minos cannot possibly fit exactly into a rectangle
-** due to having an odd parity against one of three patterns (checkboard,
-** horizontal stripes, or vertical stripes). Returns 0 otherwise.
-*/
 
 int		check_parity(t_mino **minos)
 {

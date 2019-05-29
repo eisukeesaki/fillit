@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-Wall -Wextra -Werror -I libft
+CFLAGS=-Wall -Wextra -Werror
 OBJS=fillit.o \
 	 check_parity.o \
 	 fill_board.o \
