@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 18:38:25 by nwhitlow          #+#    #+#             */
-/*   Updated: 2019/05/28 19:40:21 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/05/29 00:44:33 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static int	board_is_ok(char board[][16], int bsize, t_mino **minos, int piece)
 
 static int	sqrt_round_up(int n)
 {
-	int root;
+	int		root;
 
 	root = 0;
 	while (root * root < n)
@@ -53,7 +53,7 @@ static int	sqrt_round_up(int n)
 
 static int	num_minos(t_mino **minos)
 {
-	int mino_count;
+	int		mino_count;
 
 	mino_count = 0;
 	while (minos[mino_count])
@@ -63,7 +63,7 @@ static int	num_minos(t_mino **minos)
 
 int			fill_board(char board[][16], t_mino **minos)
 {
-	int	board_size;
+	int		board_size;
 
 	ft_memset(board, '.', 256);
 	board_size = sqrt_round_up(num_minos(minos) * 4 + check_parity(minos));

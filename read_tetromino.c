@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/23 22:45:26 by eesaki            #+#    #+#             */
-/*   Updated: 2019/05/28 19:40:36 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/05/29 00:42:59 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static t_mino	**raw_minos_to_minos(size_t mino_ct, char **raw_minos)
 
 static void		free_raw_minos(char **raw_minos)
 {
-	int i;
+	int		i;
 
 	i = 0;
 	while (raw_minos[i])

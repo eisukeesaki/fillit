@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/23 21:14:55 by eesaki            #+#    #+#             */
-/*   Updated: 2019/05/28 19:40:48 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/05/29 00:44:48 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	print_board(char board[][16], int board_size)
 {
-	int y;
+	int		y;
 
 	y = 0;
 	while (y < board_size)

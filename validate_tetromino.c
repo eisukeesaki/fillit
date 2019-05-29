@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/12 19:47:47 by nwhitlow          #+#    #+#             */
-/*   Updated: 2019/05/28 19:40:39 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/05/29 00:43:40 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	is_solid(char *input, int i)
 
 static int	validate(char *input, t_mino *tetromino, int *solids)
 {
-	int i;
+	int		i;
 
 	i = 0;
 	while (i < 21)

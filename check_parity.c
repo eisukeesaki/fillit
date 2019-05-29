@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_parity.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nwhitlow <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/26 15:35:49 by nwhitlow          #+#    #+#             */
-/*   Updated: 2019/05/28 19:16:03 by nwhitlow         ###   ########.fr       */
+/*   Updated: 2019/05/29 00:43:53 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		mino_parity(char *pattern)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < 19)
@@ -28,8 +28,8 @@ int		mino_parity(char *pattern)
 
 int		check_parity(t_mino **minos)
 {
-	int parity;
-	int i;
+	int	parity;
+	int	i;
 
 	if (!minos)
 		return (0);
