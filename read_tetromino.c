@@ -6,11 +6,10 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/23 22:45:26 by eesaki            #+#    #+#             */
-/*   Updated: 2019/05/28 19:15:03 by nwhitlow         ###   ########.fr       */
+/*   Updated: 2019/05/28 19:40:36 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tetromino.h"
 #include "fillit.h"
 
 static int		read_input(const int fd, char *buff, size_t *rc)

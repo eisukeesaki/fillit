@@ -6,12 +6,11 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/12 19:47:47 by nwhitlow          #+#    #+#             */
-/*   Updated: 2019/05/23 21:58:50 by nwhitlow         ###   ########.fr       */
+/*   Updated: 2019/05/28 19:40:39 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include "tetromino.h"
 
 static int	is_solid(char *input, int i)
 {

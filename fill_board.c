@@ -6,12 +6,11 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 18:38:25 by nwhitlow          #+#    #+#             */
-/*   Updated: 2019/05/26 18:41:20 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/05/28 19:40:21 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include "check_parity.h"
 
 static int	board_is_ok(char board[][16], int bsize, t_mino **minos, int piece)
 {

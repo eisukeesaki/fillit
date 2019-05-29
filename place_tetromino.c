@@ -6,12 +6,11 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/26 18:40:32 by eesaki            #+#    #+#             */
-/*   Updated: 2019/05/26 18:40:44 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/05/28 19:40:30 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include "tetromino.h"
 
 int		check(char board[][16], t_mino *mino, int x, int y)
 {
