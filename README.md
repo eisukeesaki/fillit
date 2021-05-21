@@ -14,8 +14,8 @@ It is a program that finds a way to assemble a given set of **Tetriminos(Tetris 
 - Only allowed to use the following functions across the entire project.
     - open
     - close
-    - write
     - read
+    - write
     - malloc
     - free
     - exit
